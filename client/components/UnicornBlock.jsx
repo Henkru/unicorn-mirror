@@ -2,9 +2,9 @@ import React from 'react';
 
 class UnicornBlock extends React.Component {
   static defaultProps = {
-    component: null,
+    component: undefined,
     header: '',
-    float: null
+    position: undefined
   }
 
   render() {

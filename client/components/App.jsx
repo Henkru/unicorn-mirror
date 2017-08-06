@@ -1,5 +1,6 @@
 import React from 'react';
 import UnicornBlock from './UnicornBlock'
+import Grid from './Grid'
 
 import * as io from 'socket.io-client'
 import uuid from 'uuid'
@@ -14,6 +15,7 @@ export default class App extends React.Component {
         key={uuid.v4()}
         component={this.createModuleComponent(module)}
         header={module.header}
+        position={module.position}
       />
     )
   }
@@ -28,7 +30,7 @@ export default class App extends React.Component {
 
   render() {
     return <div>
-      {this.state.modules}
+      <Grid modules={this.state.modules}></Grid>
     </div>
   }
 }

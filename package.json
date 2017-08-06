@@ -19,6 +19,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-grid-layout": "^0.14.7",
+    "react-grid-system": "^2.9.5",
     "react-json-table": "^0.1.1",
     "socket.io": "^2.0.3",
     "socket.io-client": "^2.0.3",

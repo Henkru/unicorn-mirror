@@ -213,7 +213,7 @@ var Row = React.createClass({
 
 		if( rowClass )
 			className = rowClass( className, props.item );
-		console.log(this.props.opacity)
+
 		return $.tr({
 			className: className,
 			onClick: me.onClickRow,

@@ -15,13 +15,13 @@ class Grid extends React.Component {
 
         return <div>
             <Row>
-                <Col sm={4}>
+                <Col sm={3}>
                     {leftModules}
                 </Col>
-                <Col sm={4}>
+                <Col sm={6}>
                     {centerModules}
                 </Col>
-                <Col sm={4} style={MS.default.alignRight}>
+                <Col sm={3} style={MS.default.alignRight}>
                     {rightModules}
                 </Col>
             </Row>

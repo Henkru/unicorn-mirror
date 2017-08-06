@@ -59,7 +59,8 @@ class HSL extends UnicornComponent {
     const columns = [
       {
         key: 'name', cell: (item, columnKey) => {
-          return <span>{ item.trip.route.shortName }</span>
+          const style = Object.assign({}, MS.default.alignLeft, { display: 'block' })
+          return <span style={ style }>{ item.trip.route.shortName }</span>
         }
       },
       {

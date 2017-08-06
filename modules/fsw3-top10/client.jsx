@@ -29,7 +29,12 @@ class FsW3Top10 extends UnicornComponent {
 
   render() {
     const columns = [
-      'name',
+      {
+        key: 'name', cell: (item, columnKey) => {
+          const style = Object.assign({}, MS.default.alignLeft, { display: 'block' })
+          return <span style={ style }>{ item.name }</span>
+        }
+      },
       {
         key: 'count', cell: (item, columnKey) => {
           const style = Object.assign({}, MS.default.bright, MS.default.alignRight, {display: 'block'})

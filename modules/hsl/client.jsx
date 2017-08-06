@@ -1,7 +1,7 @@
 import React from 'react'
 import UnicornComponent from '../UnicornComponent'
 import MS from '../../client/components/MagicStyle'
-import JsonTable from './react-json-table'
+import JsonTable from '../../client/components/react-json-table'
 
 import moment from 'moment'
 import ApolloClient, { createNetworkInterface } from 'apollo-client'

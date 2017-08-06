@@ -1,5 +1,5 @@
 import React from 'react'
-import JsonTable from './react-json-table'
+import JsonTable from '../../client/components/react-json-table'
 import UnicornComponent from '../UnicornComponent'
 import MS from '../../client/components/MagicStyle'
 

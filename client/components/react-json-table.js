@@ -75,6 +75,7 @@ var JsonTable = React.createClass({
 				item: item,
 				settings: settings,
 				columns: cols,
+				opacity: 1-0.8*i/items.length,
 				i: i++,
 				onClickRow: me.onClickRow,
 				onClickCell: me.onClickCell
@@ -212,11 +213,12 @@ var Row = React.createClass({
 
 		if( rowClass )
 			className = rowClass( className, props.item );
-
+		console.log(this.props.opacity)
 		return $.tr({
 			className: className,
 			onClick: me.onClickRow,
-			key: this.props.reactKey
+			key: this.props.reactKey,
+			style: {opacity: this.props.opacity}
 		}, cells );
 	},
 

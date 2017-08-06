@@ -29,8 +29,8 @@ class HSL extends UnicornComponent {
     HSL.client.query({
       query: gql`
         {
-          stop(id: "${this.props.settings.id}") {
-            stoptimesWithoutPatterns(numberOfDepartures:${this.props.settings.numberOfDepartures || 10}) {
+          stop(id: "${ this.props.settings.id }") {
+            stoptimesWithoutPatterns(numberOfDepartures:${ this.props.settings.numberOfDepartures || HSL.defaultProps.settings.numberOfDepartures }) {
               trip{
                 route{
                   shortName
@@ -59,7 +59,7 @@ class HSL extends UnicornComponent {
     const columns = [
       {
         key: 'name', cell: (item, columnKey) => {
-          return <span>{item.trip.route.shortName}</span>
+          return <span>{ item.trip.route.shortName }</span>
         }
       },
       {
@@ -67,19 +67,19 @@ class HSL extends UnicornComponent {
           const style = Object.assign({}, MS.default.bright, MS.default.alignRight, { display: 'block' })
           const timestamp = item.serviceDay + item.scheduledDeparture + item.departureDelay
 
-          return <span style={style}>{moment(timestamp * 1000).format("HH:mm")}</span>
+          return <span style={ style }>{moment(timestamp * 1000).format("HH:mm")}</span>
         }
       },
     ]
 
     let table = <JsonTable
       style={{ width: '100%' }}
-      rows={this.state.busses}
-      columns={columns}
+      rows={ this.state.busses }
+      columns={ columns }
       settings={{ header: false }} />
 
     return <div>
-      {table}
+      { table }
     </div>
   }
 }

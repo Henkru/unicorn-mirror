@@ -32,6 +32,9 @@ module.exports = [
                 },
             ]
         },
-        plugins: [HtmlWebpackPluginConfig]
+        plugins: [HtmlWebpackPluginConfig],
+        devServer: {
+            contentBase: path.join(__dirname, "dist")
+        }
     }
 ]

@@ -21,10 +21,11 @@ class UnicornComponent extends React.Component {
       data: data
     });
 
-    this.props.io.on(`notification_${this.props.id}`, msg => {
+    this.props.io.on(`notification_${ this.props.id }`, msg => {
       const { module, sender, data } = msg;
 
       this.receiveNotification(data);
+      this.props.io.removeListener(`notification_${ this.props.id }`)
     });
   }
 }

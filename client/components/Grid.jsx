@@ -26,7 +26,7 @@ class Grid extends React.Component {
                 </Col>
             </Row>
             <Row>
-                <Col sm={12} style={MS.default.alignCenter}>
+                <Col sm={12} style={ Object.assign({ position: "fixed", bottom: 0}, MS.default.alignCenter) }>
                     {bottomModules}
                 </Col>
             </Row>

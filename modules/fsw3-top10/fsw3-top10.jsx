@@ -1,6 +1,7 @@
 import React from 'react'
-import JsonTable from 'react-json-table'
+import JsonTable from './react-json-table'
 import UnicornComponent from '../UnicornComponent'
+import MS from '../../client/components/MagicStyle'
 
 class FsW3Top10 extends UnicornComponent {
   static defaultProps = {
@@ -27,11 +28,24 @@ class FsW3Top10 extends UnicornComponent {
 
 
   render() {
-    return <div>
-      <JsonTable
+    const columns = [
+      'name',
+      {
+        key: 'count', cell: (item, columnKey) => {
+          const style = Object.assign({}, MS.default.bright, MS.default.alignRight, {display: 'block'})
+          return <span style={style}>{item.count}</span>
+        }
+      },
+    ]
+
+    let table = <JsonTable
+        style={{width: '100%'}}
         rows={this.state.detections}
-        columns={['name', 'count']}
+        columns={columns}
         settings={{ header: false }} />
+
+    return <div>
+      {table}
     </div>
   }
 }

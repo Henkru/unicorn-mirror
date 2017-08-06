@@ -1,4 +1,4 @@
-let styles = {
+const blocks = {
   App: {
     color: '#aaa',
     backgroundColor: 'black',
@@ -22,7 +22,7 @@ let styles = {
   }
 }
 
-let defaults = {
+const defaults = {
   dimmed: {
     color: '#666'
   },
@@ -83,6 +83,6 @@ let defaults = {
   }
 }
 
-Object.assign(styles, { default: defaults })
+const styles = Object.assign({}, blocks, { default: defaults })
 
 export default styles

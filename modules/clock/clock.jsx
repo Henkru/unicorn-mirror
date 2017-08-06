@@ -30,7 +30,7 @@ class Clock extends UnicornComponent {
   date() {
     const date = moment(this.state.time).format(this.props.format.date)
 
-    return <div style={Object.assign(MS.default.normal, MS.default.medium)}>
+    return <div style={Object.assign({}, MS.default.normal, MS.default.medium)}>
       {date}
     </div>
   }
@@ -40,8 +40,8 @@ class Clock extends UnicornComponent {
     const minutes = moment(this.state.time).format(this.props.format.time.minutes)
     const seconds = moment(this.state.time).format(this.props.format.time.seconds)
 
-    const divStyle = Object.assign(MS.default.large, MS.default.bright, MS.default.light)
-    const secondsStyle = Object.assign(MS.default.dimmed, { fontSize: '50%', lineHeight: '50%' })
+    const divStyle = Object.assign({}, MS.default.large, MS.default.bright, MS.default.light)
+    const secondsStyle = Object.assign({}, MS.default.dimmed, { fontSize: '50%', lineHeight: '50%' })
 
     return <div style={divStyle}>
       {hours}{minutes}

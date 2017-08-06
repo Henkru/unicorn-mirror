@@ -28,7 +28,7 @@ export default class App extends React.Component {
     const Module = require(`../../modules/${moduleName}/${moduleName}`).default;
 
     const key = uuid.v4();
-    return <Module name={moduleName} key={key} id={key} io={socket} />
+    return <Module name={moduleName} key={key} id={key} io={socket} settings={module.settings || {}} />
   }
 
   render() {

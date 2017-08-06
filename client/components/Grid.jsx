@@ -12,7 +12,7 @@ class Grid extends React.Component {
         const centerModules = this.props.modules.filter(e => e.props.position == "center")
         const rightModules = this.props.modules.filter(e => e.props.position == "right")
         const bottomModules = this.props.modules.filter(e => e.props.position == "bottom")
-console.log(MS.default.alginRight)
+
         return <div>
             <Row>
                 <Col sm={4}>

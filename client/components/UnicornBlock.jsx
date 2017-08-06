@@ -9,7 +9,7 @@ class UnicornBlock extends React.Component {
   }
 
   render() {
-    const style = Object.assign(MS.Header, MS.default.bright)
+    const style = Object.assign({}, MS.Header, MS.default.bright)
     const header = this.props.header !== '' ? <header style={style}>{this.props.header}</header> : undefined;
 
     return <div>

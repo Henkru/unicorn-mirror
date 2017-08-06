@@ -13,7 +13,7 @@ config.modules.forEach(m => {
 
     if (backend) {
       logger.info(`Loaded: ${moduleName}`)
-      moduleBackends = Object.assign({}, moduleBackends, { [moduleName]: new backend() })
+      moduleBackends = Object.assign({}, moduleBackends, { [moduleName]: new backend(m.settings || {}) })
     }
   }
 })

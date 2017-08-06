@@ -40,7 +40,7 @@ class Clock extends UnicornComponent {
     const minutes = moment(this.state.time).format(this.props.format.time.minutes)
     const seconds = moment(this.state.time).format(this.props.format.time.seconds)
 
-    const divStyle = Object.assign({}, MS.default.large, MS.default.bright, MS.default.light)
+    const divStyle = Object.assign({}, MS.default.xlarge, MS.default.bright, MS.default.light)
     const secondsStyle = Object.assign({}, MS.default.dimmed, { fontSize: '50%', lineHeight: '50%' })
 
     return <div style={divStyle}>

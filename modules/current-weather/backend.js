@@ -18,11 +18,8 @@ export default class {
   fetchData() {
     const url = this.apiBase + "?" + querystring.stringify({
       id: this.settings.locationID,
-      appid: this.settings.apiKey,
-      //units: this.settings.units || 'metric'
+      appid: this.settings.apiKey
     })
-
-    console.log(url)
 
     return fetch(url)
     .then(res => res.json())
@@ -33,7 +30,6 @@ export default class {
   }
 
   receiveNotification(sender, data, callback) {
-    console.log(sender, data)
     this.fetchData()
     .then(data => callback(data))
   }

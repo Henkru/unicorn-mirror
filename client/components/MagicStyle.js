@@ -1,5 +1,3 @@
-import style from 'react-style';
-
 let styles = {
   App: {
     color: '#aaa',
@@ -7,17 +5,17 @@ let styles = {
 
     fontFamily: 'Roboto Condensed, sans-serif',
     fontWeight: 400,
-    fontSize: '2em',
-    lineHeight: '1.5em',
+    fontSize: '1em',
+    lineHeight: '1.2em',
     WebkitFontSmoothing: 'antialiased'
   },
   Header: {
     textTransform: 'uppercase',
-    fontSize: '15px',
+    fontSize: '2em',
     fontFamily: 'Roboto Condensed',
     fontWeight: 400,
     borderBottom: '1px solid #666',
-    lineHeight: '15px',
+    lineHeight: '1em',
     paddingBottom: '5px',
     marginBottom: '10px',
     color: '#999'
@@ -74,15 +72,17 @@ let defaults = {
     fontWeight: 700
   },
 
-  alginRight: {
-    textAlgin: 'right'
+  alignRight: {
+    textAlign: 'right'
   },
-  alginLeft: {
-    textAlgin: 'left'
+  alignLeft: {
+    textAlign: 'left'
+  },
+  alignCenter: {
+    textAlign: 'center'
   }
 }
 
-Object.keys(styles).map(i => styles[i] = style.create(styles[i]))
-Object.keys(defaults).map(i => defaults[i] = style.create(defaults[i]))
-Object.assign(styles, {default: defaults})
-module.exports = styles;
+Object.assign(styles, { default: defaults })
+
+export default styles

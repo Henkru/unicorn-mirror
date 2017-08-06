@@ -1,6 +1,9 @@
-import React from 'react';
+import React from 'react'
+import BodyStyle from 'body-style'
 import UnicornBlock from './UnicornBlock'
 import Grid from './Grid'
+
+import MS from './MagicStyle'
 
 import * as io from 'socket.io-client'
 import uuid from 'uuid'
@@ -30,6 +33,7 @@ export default class App extends React.Component {
 
   render() {
     return <div>
+      <BodyStyle style={MS.App} />
       <Grid modules={this.state.modules}></Grid>
     </div>
   }

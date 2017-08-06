@@ -6,7 +6,7 @@ module.exports = {
     },
     {
       module: "clock",
-      position: "right"
+      position: "bottom"
     },
     {
       module: "fsw3-top10",

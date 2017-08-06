@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-grid-system';
+import { Row, Col } from 'react-grid-system';
+import MS from './MagicStyle'
 
 class Grid extends React.Component {
     static defaultProps = {
@@ -11,8 +12,8 @@ class Grid extends React.Component {
         const centerModules = this.props.modules.filter(e => e.props.position == "center")
         const rightModules = this.props.modules.filter(e => e.props.position == "right")
         const bottomModules = this.props.modules.filter(e => e.props.position == "bottom")
-
-        return <Container>
+console.log(MS.default.alginRight)
+        return <div>
             <Row>
                 <Col sm={4}>
                     {leftModules}
@@ -20,16 +21,16 @@ class Grid extends React.Component {
                 <Col sm={4}>
                     {centerModules}
                 </Col>
-                <Col sm={4}>
+                <Col sm={4} style={MS.default.alignRight}>
                     {rightModules}
                 </Col>
             </Row>
             <Row>
-                <Col sm={12}>
+                <Col sm={12} style={MS.default.alignCenter}>
                     {bottomModules}
                 </Col>
             </Row>
-        </Container>
+        </div>
     }
 }
 

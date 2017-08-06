@@ -11,7 +11,7 @@ app.use((req, res, next) => {
     App.app(req, res, next)
 })
 
-app.use('/fonts/', express.static('fonts'))
+app.use('/', express.static('dist'))
 
 const server = http.createServer(app)
 App.io.listen(server)

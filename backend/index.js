@@ -21,7 +21,9 @@ if (config.user.backend.serveFrontend) {
 const server = http.createServer(app);
 App.io.listen(server);
 server.listen(config.port, config.hostname, (err) => {
-  if (err) throw err;
+  if (err) {
+    throw err;
+  }
 
   const addr = server.address();
   log.info('Listening at http://%s:%d', addr.address, addr.port);

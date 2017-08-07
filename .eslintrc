@@ -1,0 +1,11 @@
+{
+  "env": {
+    "node":true,
+    "es6":true
+  },
+  "extends": "airbnb",
+  "rules": {
+    "space-before-function-paren": ["error", { "asyncArrow": "ignore", "named": "never"}],
+    "quotes": [1, "single", { "allowTemplateLiterals": true }]
+  }
+}

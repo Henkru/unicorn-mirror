@@ -6,7 +6,7 @@ A another Magic Mirror build.
 
 ```
 $ cp config.json.example config.json
-$ yarn build
+$ NODE_ENV='production' yarn build
 $ yarn start
 ```
 

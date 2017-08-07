@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
@@ -12,6 +13,12 @@ const ExtractTextPluginConfig = new ExtractTextPlugin({
     filename: "./css/style.css",
     allChunks: true
 })
+
+const minify = new webpack.optimize.UglifyJsPlugin({
+    compress: { warnings: false }
+})
+
+const PROD = (process.env.NODE_ENV === 'production');
 
 module.exports = [
     {
@@ -53,6 +60,6 @@ module.exports = [
                 }
             ]
         },
-        plugins: [HtmlWebpackPluginConfig, ExtractTextPluginConfig]
+        plugins: [HtmlWebpackPluginConfig, ExtractTextPluginConfig].concat(PROD ? [minify] : [])
     }
 ]

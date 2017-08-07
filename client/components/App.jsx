@@ -11,7 +11,7 @@ import uuid from 'uuid'
 
 const config = require('../../config')
 
-const socketUrl = "http://" + window.location.hostname + ":5000";
+const socketUrl = config.frontend.api ? config.frontend.api : window.location.origin;
 const socket = require('socket.io-client')(socketUrl)
 
 export default class App extends React.Component {

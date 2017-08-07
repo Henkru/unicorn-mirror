@@ -4,6 +4,7 @@ import UnicornBlock from './UnicornBlock'
 import Grid from './Grid'
 
 import MS from './MagicStyle'
+require('../fonts/roboto.css')
 
 import * as io from 'socket.io-client'
 import uuid from 'uuid'

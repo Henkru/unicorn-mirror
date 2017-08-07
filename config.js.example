@@ -1,25 +1,49 @@
 module.exports = {
+  backend: {
+    serveFrontend: true,
+    port: 5000,
+    hostname: "localhost"
+  },
   modules: [
     {
       module: "clock",
       position: "right"
     },
     {
-      module: "clock",
-      position: "bottom"
+      module: "current-weather",
+      position: "left",
+      settings: {
+        apiKey: "",
+        locationID: 0
+      }
+    },
+    {
+      module: "xkcd",
+      position: "center"
     },
     {
       module: "hsl",
       header: "Busses",
-      position: "left",
+      position: "right",
       settings: {
         id: 'HSL:2212239'
       }
     },
     {
-      module: "fsw3-top10",
-      header: "Top10/24h",
-      position: "left"
+      module: "quote",
+      position: "bottom",
+      settings: {
+        quotes: [
+          {
+            quote: "The hottest places in Hell are reserved for those who in time of moral crisis preserve their neutrality.",
+            author: "Dante Alighieri"
+          },
+          {
+            quote: "Everything should be made as simple as possible, but not simpler.",
+            author: "Albert Einstein"
+          }
+        ]
+      }
     },
   ]
 }

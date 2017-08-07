@@ -7,6 +7,12 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
     inject: 'body'
 })
 
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPluginConfig = new ExtractTextPlugin({
+    filename: "./css/style.css",
+    allChunks: true
+})
+
 module.exports = [
     {
         name: 'Client',
@@ -17,7 +23,7 @@ module.exports = [
             filename: 'index_bundle.js'
         },
         resolve: {
-            extensions: ['.js', '.jsx']
+            extensions: ['.js', '.jsx', '.css']
         },
         module: {
             loaders: [
@@ -30,11 +36,18 @@ module.exports = [
                         path.join(__dirname, 'modules')
                     ]
                 },
+                {
+                    test: /\.css$/,
+                    use: ExtractTextPlugin.extract({
+                        use: "css-loader"
+                    })
+                },
+                {
+                    test: /fonts\/.+\.(ttf|woff2?|eot|svg)$/,
+                    loader: "file-loader?name=/fonts/[name].[ext]"
+                },
             ]
         },
-        plugins: [HtmlWebpackPluginConfig],
-        devServer: {
-            contentBase: path.join(__dirname, "dist")
-        }
+        plugins: [HtmlWebpackPluginConfig, ExtractTextPluginConfig]
     }
 ]

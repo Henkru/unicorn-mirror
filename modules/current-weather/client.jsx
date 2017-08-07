@@ -3,6 +3,8 @@ import JsonTable from '../../client/components/react-json-table'
 import UnicornComponent from '../UnicornComponent'
 import MS from '../../client/components/MagicStyle'
 
+require('./css/weather-icons.min.css')
+
 const toTitleCase = str => {
     return str.replace(/\w\S*/g, txt => {return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }

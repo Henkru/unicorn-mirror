@@ -9,7 +9,10 @@ import * as io from 'socket.io-client'
 import uuid from 'uuid'
 
 const config = require('../../config')
-const socket = require('socket.io-client')('http://localhost:5000')
+
+const socketUrl = "http://" + window.location.hostname + ":5000";
+console.log(socketUrl);
+const socket = require('socket.io-client')(socketUrl)
 
 export default class App extends React.Component {
   state = {

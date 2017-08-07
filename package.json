@@ -6,6 +6,8 @@
   "author": "Henri Nurmi <henri@nurmi.me>",
   "license": "MIT",
   "scripts": {
+    "build": "bash build.sh",
+    "start": "nodemon dist/backend/index.js",
     "dev-backend": "nodemon backend/index.js --exec babel-node --presets es2015,stage-2",
     "dev-client": "webpack-dev-server"
   },

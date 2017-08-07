@@ -13,7 +13,7 @@ module.exports = [
         devtool: '#eval-source-map',
         entry: './client/index.js',
         output: {
-            path: path.resolve('dist/'),
+            path: path.resolve('dist/client/'),
             filename: 'index_bundle.js'
         },
         resolve: {

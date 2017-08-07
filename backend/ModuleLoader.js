@@ -1,35 +1,34 @@
-import logger from './logger'
-import config from './config'
-const log = logger("loader")
+import logger from './logger';
+import config from './config';
 
-let moduleBackends = {}
+const log = logger('loader');
 
-log.info("Loading backend modules")
-config.user.modules.forEach(m => {
-  const moduleName = m.module
+let moduleBackends = {};
+
+log.info('Loading backend modules')
+config.user.modules.forEach((m) => {
+  const moduleName = m.module;
 
   if (!moduleBackends[moduleName]) {
     try {
-      const backendClass = require(`../modules/${moduleName}/backend`).default
+      const BackendClass = require(`../modules/${moduleName}/backend`).default;
 
-      if (!backendClass.constructor)
-        throw "Module is not class"
+      if (!BackendClass.constructor) throw 'Module is not class';
 
       try {
-        const backend = new backendClass(m.settings || {}, logger(moduleName))
+        const backend = new BackendClass(m.settings || {}, logger(moduleName));
 
-        moduleBackends = Object.assign({}, moduleBackends, { [moduleName]: backend })
-        log.info("Module %s loaded", moduleName)
+        moduleBackends = Object.assign({}, moduleBackends, { [moduleName]: backend });
+        log.info('Module %s loaded', moduleName);
+      } catch (e) {
+        log.error('Failed to load module %s: %s', moduleName, e);
       }
-      catch (e) {
-        log.error(`Failed to load module %s: %s`, moduleName, e)
-      }
-    }
-    catch (e) {
-      log.info("Module %s doesn't contain backend", moduleName)
+    } catch (e) {
+      log.info('Module %s does not contain backend', moduleName);
     }
   }
-})
-log.info("Loaded %i backends", Object.keys(moduleBackends).length)
+});
+log.info('Loaded %i backends', Object.keys(moduleBackends).length);
 
-export { moduleBackends as moduleBackends }
+const backends = moduleBackends;
+export { backends as default };

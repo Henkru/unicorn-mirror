@@ -1,22 +1,21 @@
 import React from 'react';
-import MS from './MagicStyle'
+import MS from './MagicStyle';
 
-class UnicornBlock extends React.Component {
+export default class UnicornBlock extends React.Component {
   static defaultProps = {
-    component: undefined,
+    component: null,
     header: '',
-    position: undefined
+    position: null,
   }
 
   render() {
     const style = Object.assign({}, MS.Header, MS.default.bright)
     const header = this.props.header !== '' ? <header style={style}>{this.props.header}</header> : undefined;
 
-    return <div>
-      {header}
-      {this.props.component}
-    </div>;
+    return (
+      <div>
+        {header}
+        {this.props.component}
+      </div>);
   }
 }
-
-export { UnicornBlock as default }

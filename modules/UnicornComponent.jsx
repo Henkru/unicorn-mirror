@@ -4,11 +4,7 @@ class UnicornComponent extends React.Component {
   static defaultProps = {
     id: '',
     name: '',
-    io: null
-  }
-
-  render() {
-    return <div>{this.props.key}</div>;
+    io: null,
   }
 
   receivedNotification(data) {
@@ -21,12 +17,16 @@ class UnicornComponent extends React.Component {
       data: data
     });
 
-    this.props.io.on(`notification_${ this.props.id }`, msg => {
+    this.props.io.on(`notification_${this.props.id}`, (msg) => {
       const { module, sender, data } = msg;
 
       this.receiveNotification(data);
-      this.props.io.removeListener(`notification_${ this.props.id }`)
+      this.props.io.removeListener(`notification_${this.props.id}`)
     });
+  }
+
+  render() {
+    return <div>{this.props.id}</div>;
   }
 }
 

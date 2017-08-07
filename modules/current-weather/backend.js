@@ -1,33 +1,31 @@
-import { default as fetch } from 'isomorphic-fetch'
-import querystring from 'querystring'
+import fetch from 'isomorphic-fetch';
+import querystring from 'querystring';
 
 export default class {
-  apiBase = "http://samples.openweathermap.org/data/2.5/weather"
+  apiBase = 'http://samples.openweathermap.org/data/2.5/weather'
 
   constructor(settings, log) {
-    this.settings = settings
+    this.settings = settings;
 
-    if (!settings.apiKey)
-      throw "API key is missing"
-    
+    if (!settings.apiKey) throw 'API key is missing';
+
     this.fetchData()
   }
 
   fetchData() {
-    const url = this.apiBase + "?" + querystring.stringify({
+    const params = querystring.stringify({
       id: this.settings.locationID,
-      appid: this.settings.apiKey
-    })
+      appid: this.settings.apiKey,
+    });
+    const url = `${this.apiBase}?${params}`;
 
     return fetch(url)
-    .then(res => res.json())
-    .then(res => {
-      return res
-    })
+      .then(res => res.json())
+      .then(res => res)
   }
 
   receiveNotification(sender, data, callback) {
     this.fetchData()
-    .then(data => callback(data))
+      .then(data => callback(data))
   }
 }

@@ -1,12 +1,12 @@
-import express from 'express'
-import io from 'socket.io'
+import express from 'express';
+import io from 'socket.io';
 
-import { moduleBackends as backends } from './ModuleLoader'
-import { default as handler } from './BackendHandler'
+import backends from './ModuleLoader';
+import handler from './BackendHandler';
 
-const app = express.Router()
-const socket = io()
+const app = express.Router();
+const socket = io();
 
-handler(socket, backends)
+handler(socket, backends);
 
-export { app as app, socket as io }
+export { app, socket as io };

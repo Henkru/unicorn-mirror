@@ -1,15 +1,12 @@
-import React from 'react'
-import JsonTable from '../../client/components/react-json-table'
-import UnicornComponent from '../UnicornComponent'
-import MS from '../../client/components/MagicStyle'
+import React from 'react';
+import UnicornComponent from '../UnicornComponent';
+import MS from '../../client/components/MagicStyle';
 
-require('./css/weather-icons.min.css')
+import weatherIcon from './css/weather-icons.min.css';
 
-const toTitleCase = str => {
-    return str.replace(/\w\S*/g, txt => {return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-}
+const toTitleCase = str => str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 
-class CurrentWeather extends UnicornComponent {
+export default class CurrentWeather extends UnicornComponent {
   static defaultProps = {
   }
 
@@ -31,94 +28,94 @@ class CurrentWeather extends UnicornComponent {
     '10n': 'wi-night-rain',
     '11n': 'wi-night-thunderstorm',
     '13n': 'wi-night-snow',
-    '50n': 'wi-night-alt-cloudy-windy'
+    '50n': 'wi-night-alt-cloudy-windy',
   }
 
   state = {
-    status: {}
+    status: {},
   }
 
   componentDidMount() {
-    this.update()
-    setInterval(() => this.update(), 60 * 1000)
+    this.update();
+    setInterval(() => this.update(), 60 * 1000);
   }
 
   update() {
-    this.sendNotification({ action: 'update' })
+    this.sendNotification({ action: 'update' });
   }
 
   receiveNotification(data) {
-    this.setState({ status: data })
+    this.setState({ status: data });
   }
 
   getTemperature() {
     try {
-      return this.state.status.main.temp - 272.15
+      return this.state.status.main.temp - 272.15;
     }
-    catch(e) {
-      return ''
+    catch (e) {
+      return '';
     }
   }
 
   getSunrise() {
     try {
-      return this.state.status.sys.sunrise
+      return this.state.status.sys.sunrise;
     }
-    catch(e) {
-      return ''
+    catch (e) {
+      return '';
     }
   }
 
   getSunset() {
     try {
-      return this.state.status.sys.sunset
+      return this.state.status.sys.sunset;
     }
-    catch(e) {
-      return ''
+    catch (e) {
+      return '';
     }
   }
 
   getWeatherIcon() {
     try {
-      return "wi " + CurrentWeather.iconTable[this.state.status.weather[0].icon]
+      return `wi ${CurrentWeather.iconTable[this.state.status.weather[0].icon]}`;
     }
-    catch(e) {
-      return ''
+    catch (e) {
+      return '';
     }
   }
 
   getCity() {
     try {
-      return this.state.status.name
+      return this.state.status.name;
     }
-    catch(e) {
-      return ''
+    catch (e) {
+      return '';
     }
   }
 
   getDescription() {
     try {
-      return this.state.status.weather[0].description
+      return this.state.status.weather[0].description;
     }
-    catch(e) {
-      return ''
+    catch (e) {
+      return '';
     }
   }
 
   render() {
-    const iconStyle = Object.assign({}, MS.default.xlarge, MS.default.bright, MS.default.light)
-    const temperatureStyle = Object.assign({}, MS.default.dimmed, MS.default.normal)
+    const iconStyle = Object.assign({}, MS.default.xlarge, MS.default.bright, MS.default.light);
+    const temperatureStyle = Object.assign({}, MS.default.dimmed, MS.default.normal);
 
-    return <div>
+    return (
+      <div>
         <div style={Object.assign({}, MS.default.normal, MS.default.medium)}>
-          { toTitleCase(this.getDescription()) }
+          {toTitleCase(this.getDescription())}
         </div>
-        <div style={ iconStyle }>
-          <i style={{ paddingRight: "0.3em" }} className={ this.getWeatherIcon() }></i>
-          <span style={ temperatureStyle }>{ this.getTemperature() } &deg;</span>
+        <div style={iconStyle}>
+          <i style={{ paddingRight: '0.3em' }} className={this.getWeatherIcon()} />
+          <span style={temperatureStyle}>{this.getTemperature()} &deg;</span>
         </div>
-    </div>
+      </div>
+    );
   }
 }
-
-export { CurrentWeather as default }

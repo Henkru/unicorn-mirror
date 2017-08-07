@@ -23,4 +23,4 @@ $ yarn dev-backend
 
 ### Thanks to
 
- * [MagicMirror](https://github.com/MichMich/MagicMirror) for Markdown parsing
+ * [MagicMirror](https://github.com/MichMich/MagicMirror) for the idea

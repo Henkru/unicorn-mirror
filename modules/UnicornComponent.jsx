@@ -7,21 +7,32 @@ export default class UnicornComponent extends React.Component {
     io: null,
   }
 
+  state = {
+    waitingNotification: false,
+  }
+
   receivedNotification(data) {
   }
 
   sendNotification(data) {
+    if (this.state.waitingNotification) {
+      console.log("Still waiting")
+      return;
+    }
+
     this.props.io.emit('notification', {
       module: this.props.name,
       sender: this.props.id,
-      data: data
+      data: data,
     });
+    this.setState(Object.assign({}, this.state, { waitingNotification: true }));
 
     this.props.io.on(`notification_${this.props.id}`, (msg) => {
       const { module, sender, data } = msg;
 
       this.receiveNotification(data);
-      this.props.io.removeListener(`notification_${this.props.id}`)
+      this.props.io.removeListener(`notification_${this.props.id}`);
+      this.setState(Object.assign({}, this.state, { waitingNotification: false }));
     });
   }
 

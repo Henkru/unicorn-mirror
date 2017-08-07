@@ -43,9 +43,14 @@ module.exports = [
                     })
                 },
                 {
-                    test: /fonts\/.+\.(ttf|woff2?|eot|svg)$/,
-                    loader: "file-loader?name=/fonts/[name].[ext]"
-                },
+                    test: /fonts\/.*\.(svg|ttf|woff2?|eot)$/,
+                    loader: "file-loader",
+                    options: {
+                        name: '[name].[ext]',
+                        publicPath: '/',
+                        outputPath: 'fonts/'
+                    }
+                }
             ]
         },
         plugins: [HtmlWebpackPluginConfig, ExtractTextPluginConfig]

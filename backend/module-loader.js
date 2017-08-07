@@ -5,7 +5,7 @@ const log = logger('loader');
 
 let moduleBackends = {};
 
-log.info('Loading backend modules')
+log.info('Loading backend modules');
 config.user.modules.forEach((m) => {
   const moduleName = m.module;
 
@@ -13,10 +13,16 @@ config.user.modules.forEach((m) => {
     try {
       const BackendClass = require(`../modules/${moduleName}/backend`).default;
 
-      if (!BackendClass.constructor) throw 'Module is not class';
+      if (!BackendClass.constructor) {
+        throw new Error('Module is not class');
+      }
 
       try {
-        const backend = new BackendClass(m.settings || {}, logger(moduleName));
+        const backend = {
+          module: new BackendClass(m.settings || {}, logger(moduleName)),
+          running: true,
+          crashCount: 0,
+        };
 
         moduleBackends = Object.assign({}, moduleBackends, { [moduleName]: backend });
         log.info('Module %s loaded', moduleName);

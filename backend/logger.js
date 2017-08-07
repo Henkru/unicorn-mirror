@@ -1,7 +1,13 @@
 import * as winston from 'winston';
 import moment from 'moment';
+import config from './config';
+
+if (!config.prod) {
+  winston.level = 'debug';
+}
 
 export default moduleName => new (winston.Logger)({
+  level: winston.level,
   transports: [
     new (winston.transports.Console)({
       timestamp: () => moment().format(),

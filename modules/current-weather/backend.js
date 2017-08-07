@@ -1,20 +1,15 @@
 import fetch from 'isomorphic-fetch';
 import querystring from 'querystring';
+import BackendModule from '../backend-module';
 
-export default class {
+export default class CurrentWeather extends BackendModule {
   apiBase = 'http://samples.openweathermap.org/data/2.5/weather'
 
-  constructor(settings, log) {
-    this.settings = settings;
-
-    if (!settings.apiKey) {
-      throw 'API key is missing';
+  fetchData() {
+    if (!this.settings.apiKey) {
+      throw new Error('API key is missing');
     }
 
-    this.fetchData();
-  }
-
-  fetchData() {
     const params = querystring.stringify({
       id: this.settings.locationID,
       appid: this.settings.apiKey,

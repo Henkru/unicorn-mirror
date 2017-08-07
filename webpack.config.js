@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './client/index.html',
@@ -63,5 +64,28 @@ module.exports = [
       ],
     },
     plugins: [HtmlWebpackPluginConfig, ExtractTextPluginConfig].concat(PROD ? [minify] : []),
+  },
+  {
+    name: 'Backend',
+    target: 'node',
+    entry: './backend/index.js',
+    output: {
+      path: path.resolve('dist/backend/'),
+      filename: 'app.js',
+    },
+    module: {
+      loaders: [
+        {
+          test: /\.js$/,
+          loader: 'babel-loader',
+          exclude: /node_modules/,
+          include: [
+            path.join(__dirname, 'modules'),
+          ],
+        },
+      ],
+    },
+    externals: [nodeExternals()],
+    plugins: PROD ? [minify] : [],
   },
 ];

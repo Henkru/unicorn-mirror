@@ -1,6 +1,6 @@
 import React from 'react';
-import UnicornComponent from '../UnicornComponent';
-import MS from '../../client/components/MagicStyle';
+import UnicornComponent from '../unicorn-component';
+import MS from '../../client/components/magic-style';
 
 import weatherIcon from './css/weather-icons.min.css';
 

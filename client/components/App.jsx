@@ -5,11 +5,11 @@ import uuid from 'uuid';
 // Elements
 import React from 'react';
 import BodyStyle from 'body-style';
-import UnicornBlock from './UnicornBlock';
-import Grid from './Grid';
+import UnicornBlock from './unicorn-block';
+import Grid from './grid';
 
 // Styles
-import MS from './MagicStyle';
+import MS from './magic-style';
 import roboto from '../fonts/roboto.css';
 
 import config from '../config';

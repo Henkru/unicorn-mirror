@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'react-grid-system';
-import MS from './MagicStyle';
+import MS from './magic-style';
 
 export default class Grid extends React.Component {
   static defaultProps = {

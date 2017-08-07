@@ -16,7 +16,6 @@ export default class UnicornComponent extends React.Component {
 
   sendNotification(data) {
     if (this.state.waitingNotification) {
-      console.log("Still waiting")
       return;
     }
 

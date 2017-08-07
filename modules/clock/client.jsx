@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
-import UnicornComponent from '../UnicornComponent';
-import MS from '../../client/components/MagicStyle';
+import UnicornComponent from '../unicorn-component';
+import MS from '../../client/components/magic-style';
 
 export default class Clock extends UnicornComponent {
   static defaultProps = {
@@ -11,8 +11,8 @@ export default class Clock extends UnicornComponent {
         hours: 'HH:',
         minutes: 'mm',
         seconds: 'ss',
-      }
-    }
+      },
+    },
   }
 
   state = {

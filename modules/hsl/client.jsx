@@ -3,8 +3,8 @@ import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import gql from 'graphql-tag';
 
 import React from 'react';
-import UnicornComponent from '../UnicornComponent';
-import MS from '../../client/components/MagicStyle';
+import UnicornComponent from '../unicorn-component';
+import MS from '../../client/components/magic-style';
 import JsonTable from '../../client/components/react-json-table';
 
 export default class HSL extends UnicornComponent {

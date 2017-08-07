@@ -1,7 +1,7 @@
 import React from 'react';
 import JsonTable from '../../client/components/react-json-table';
-import UnicornComponent from '../UnicornComponent';
-import MS from '../../client/components/MagicStyle';
+import UnicornComponent from '../unicorn-component';
+import MS from '../../client/components/magic-style';
 
 export default class FsW3Top10 extends UnicornComponent {
   static defaultProps = {

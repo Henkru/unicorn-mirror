@@ -4,6 +4,9 @@ import http from 'http'
 import * as App from './app'
 import config from './config'
 
+import logger from './logger'
+const log = logger('backend')
+
 const app = express();
 
 // Include server routes as a middleware
@@ -21,5 +24,5 @@ server.listen(config.port, config.hostname, (err) => {
     if (err) throw err
 
     const addr = server.address()
-    console.log('Listening at http://%s:%d', addr.address, addr.port)
+    log.info('Listening at http://%s:%d', addr.address, addr.port)
 })

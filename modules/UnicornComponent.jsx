@@ -1,6 +1,6 @@
 import React from 'react';
 
-class UnicornComponent extends React.Component {
+export default class UnicornComponent extends React.Component {
   static defaultProps = {
     id: '',
     name: '',
@@ -29,5 +29,3 @@ class UnicornComponent extends React.Component {
     return <div>{this.props.id}</div>;
   }
 }
-
-export { UnicornComponent as default }

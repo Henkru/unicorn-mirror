@@ -71,7 +71,7 @@ module.exports = [
     entry: './backend/index.js',
     output: {
       path: path.resolve('dist/backend/'),
-      filename: 'app.js',
+      filename: 'index.js',
     },
     module: {
       loaders: [

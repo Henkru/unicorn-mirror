@@ -9,7 +9,7 @@
     "build": "bash build.sh",
     "start": "nodemon dist/backend/index.js",
     "dev-backend": "nodemon backend/index.js --exec babel-node --presets es2015,stage-2",
-    "dev-client": "webpack-dev-server"
+    "dev-client": "webpack-dev-server --config-name Client"
   },
   "dependencies": {
     "apollo-client": "^1.9.0",

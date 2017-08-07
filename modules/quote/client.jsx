@@ -21,7 +21,6 @@ class Quote extends UnicornComponent {
   }
 
   changeQuote() {
-    console.log("casdasd")
     const quotes = this.props.settings.quotes
     const quote = quotes[Math.floor(Math.random() * quotes.length)];
 

@@ -7,7 +7,10 @@ const blocks = {
     fontWeight: 400,
     fontSize: '1em',
     lineHeight: '1.2em',
-    WebkitFontSmoothing: 'antialiased'
+    WebkitFontSmoothing: 'antialiased',
+
+    margin: 0,
+    padding: 0
   },
   Header: {
     textTransform: 'uppercase',

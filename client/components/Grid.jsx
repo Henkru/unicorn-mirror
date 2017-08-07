@@ -14,7 +14,7 @@ class Grid extends React.Component {
         const bottomModules = this.props.modules.filter(e => e.props.position == "bottom")
 
         return <div>
-            <Row>
+            <Row style={{margin: 0}}>
                 <Col sm={3}>
                     {leftModules}
                 </Col>
@@ -25,7 +25,7 @@ class Grid extends React.Component {
                     {rightModules}
                 </Col>
             </Row>
-            <Row>
+            <Row style={{margin: 0}}>
                 <Col sm={12} style={ Object.assign({ position: "fixed", bottom: 0}, MS.default.alignCenter) }>
                     {bottomModules}
                 </Col>

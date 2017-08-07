@@ -46,7 +46,6 @@ class CurrentWeather extends UnicornComponent {
   }
 
   receiveNotification(data) {
-    console.log(data)
     this.setState({ status: data })
   }
 

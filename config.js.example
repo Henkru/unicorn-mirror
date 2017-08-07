@@ -5,13 +5,6 @@ module.exports = {
       position: "right"
     },
     {
-      module: "current-weather",
-      position: "right",
-      settings: {
-        apiKey: "2d166bfef7db4e33f22fb0a5bdf76b31"
-      }
-    }
-    {
       module: "clock",
       position: "bottom"
     },

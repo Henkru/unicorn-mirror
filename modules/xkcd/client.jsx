@@ -23,8 +23,6 @@ class XKCD extends UnicornComponent {
   }
 
   receiveNotification(data) {
-    console.log(data)
-
     this.setState({ data: data })
     setTimeout(() => {
       this.update()

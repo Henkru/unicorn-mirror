@@ -7,9 +7,11 @@ export default class {
   constructor(settings, log) {
     this.settings = settings;
 
-    if (!settings.apiKey) throw 'API key is missing';
+    if (!settings.apiKey) {
+      throw 'API key is missing';
+    }
 
-    this.fetchData()
+    this.fetchData();
   }
 
   fetchData() {
@@ -21,11 +23,11 @@ export default class {
 
     return fetch(url)
       .then(res => res.json())
-      .then(res => res)
+      .then(res => res);
   }
 
   receiveNotification(sender, data, callback) {
     this.fetchData()
-      .then(data => callback(data))
+      .then(res => callback(res));
   }
 }

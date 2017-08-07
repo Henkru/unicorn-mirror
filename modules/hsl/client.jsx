@@ -54,14 +54,14 @@ export default class HSL extends UnicornComponent {
     const columns = [
       {
         key: 'name',
-        cell: (item, columnKey) => {
+        cell: (item) => {
           const style = Object.assign({}, MS.default.alignLeft, { display: 'block' });
           return <span style={style}>{ item.trip.route.shortName }</span>;
         },
       },
       {
         key: 'count',
-        cell: (item, columnKey) => {
+        cell: (item) => {
           const style = Object.assign({}, MS.default.bright, MS.default.alignRight, { display: 'block' });
           const timestamp = item.serviceDay + item.scheduledDeparture + item.departureDelay;
 

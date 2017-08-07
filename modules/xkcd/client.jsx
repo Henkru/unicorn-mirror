@@ -36,7 +36,7 @@ export default class XKCD extends UnicornComponent {
           alt={this.state.data.alt}
           style={
             {
-              webkitFilter: 'invert(100%)',
+              WebkitFilter: 'invert(100%)',
               marginLeft: 'auto',
               marginRight: 'auto',
               display: 'block',

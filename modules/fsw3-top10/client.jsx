@@ -30,14 +30,14 @@ export default class FsW3Top10 extends UnicornComponent {
     const columns = [
       {
         key: 'name',
-        cell: (item, columnKey) => {
+        cell: (item) => {
           const style = Object.assign({}, MS.default.alignLeft, { display: 'block' });
           return <span style={style}>{item.name}</span>;
         },
       },
       {
         key: 'count',
-        cell: (item, columnKey) => {
+        cell: (item) => {
           const style = Object.assign({}, MS.default.bright, MS.default.alignRight, { display: 'block' });
           return <span style={style}>{item.count}</span>;
         },

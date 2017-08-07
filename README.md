@@ -1,4 +1,4 @@
-# Unicor Mirror
+# Unicorn Mirror
 
 A another Magic Mirror build.
 

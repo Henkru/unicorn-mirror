@@ -23,11 +23,11 @@ export default function (io, backends) {
           })
         }
         catch (e) {
-          log.error(`[${module}] crashed: `, e)
+          log.error("Module %s crashed: %s", module, e)
         }
       }
       else {
-        log.error(`[${module}] does not contain the backend`)
+        log.error("Module %s does not contain the backend", module)
       }
     })
   })

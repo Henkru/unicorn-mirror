@@ -1,16 +1,14 @@
 import { default as fetch } from 'isomorphic-fetch'
-import * as logger from 'winston'
 import querystring from 'querystring'
 
 export default class {
   apiBase = "http://samples.openweathermap.org/data/2.5/weather"
 
-  constructor(settings) {
+  constructor(settings, log) {
     this.settings = settings
 
-    if (settings.apiKey === undefined) {
-      logger.error("[current-weather] API Key is missing")
-    }
+    if (!settings.apiKey)
+      throw "API key is missing"
     
     this.fetchData()
   }
@@ -26,7 +24,6 @@ export default class {
     .then(res => {
       return res
     })
-    .catch(err => logger.error(err))
   }
 
   receiveNotification(sender, data, callback) {

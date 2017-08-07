@@ -237,6 +237,7 @@
     "react/sort-comp": 1,
     "react/wrap-multilines": 0,
 
-    "jsx-a11y/href-no-hash": "off"
+    "jsx-a11y/href-no-hash": "off",
+    "class-methods-use-this": "off"
   }
 }

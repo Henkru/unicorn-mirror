@@ -238,6 +238,8 @@
     "react/wrap-multilines": 0,
 
     "jsx-a11y/href-no-hash": "off",
-    "class-methods-use-this": "off"
+    "class-methods-use-this": "off",
+    "global-require": "off",
+    "import/no-dynamic-require": "off"
   }
 }

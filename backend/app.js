@@ -4,8 +4,8 @@ import io from 'socket.io'
 import { moduleBackends as backends } from './ModuleLoader'
 import { default as handler } from './BackendHandler'
 
-let app = express.Router()
-let socket = io()
+const app = express.Router()
+const socket = io()
 
 handler(socket, backends)
 

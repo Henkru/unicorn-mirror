@@ -5,7 +5,7 @@ import MS from '../../client/components/magic-style';
 
 export default class FsW3Top10 extends UnicornComponent {
   static defaultProps = {
-    updateInterval: null, // Fecthed data will tell the update time
+    updateInterval: 0, // Fecthed data will tell the update time
   }
 
   state = {
@@ -43,7 +43,7 @@ export default class FsW3Top10 extends UnicornComponent {
           return <span style={style}>{item.count}</span>;
         },
       },
-    ]
+    ];
 
     const table = (
       <JsonTable

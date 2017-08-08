@@ -1,5 +1,5 @@
 // Libaries
-import * as io from 'socket.io-client';
+import SocketIO from 'socket.io-client';
 import uuid from 'uuid';
 
 // Elements
@@ -14,7 +14,7 @@ import roboto from '../fonts/roboto.css';
 
 import config from '../config';
 
-const socket = require('socket.io-client')(config.socketUrl);
+const io = new SocketIO(config.socketUrl);
 
 export default class App extends React.Component {
   static createModuleComponent(module) {
@@ -27,7 +27,7 @@ export default class App extends React.Component {
         name={moduleName}
         key={key}
         id={key}
-        io={socket}
+        io={io}
         updateInterval={module.updateInterval || undefined}
         settings={module.settings || undefined}
       />

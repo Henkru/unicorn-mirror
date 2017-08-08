@@ -1,6 +1,13 @@
 import React from 'react';
 
 export default class UnicornComponent extends React.Component {
+  static propTypes = {
+    id: React.PropTypes.string.isRequired,
+    name: React.PropTypes.string,
+    io: React.PropTypes.object,
+    updateInterval: React.PropTypes.number.isRequired,
+  };
+
   static defaultProps = {
     id: '',
     name: '',
@@ -15,7 +22,7 @@ export default class UnicornComponent extends React.Component {
   componentDidMount() {
     this.update();
 
-    if (this.props.updateInterval) {
+    if (this.props.updateInterval > 0) {
       setInterval(() => this.update(), this.props.updateInterval * 1000);
     }
   }
@@ -26,7 +33,7 @@ export default class UnicornComponent extends React.Component {
   receivedNotification(data) {
   }
 
-  sendNotification(data) {
+  sendNotification(notification) {
     if (this.state.waitingNotification) {
       return;
     }
@@ -34,13 +41,12 @@ export default class UnicornComponent extends React.Component {
     this.props.io.emit('notification', {
       module: this.props.name,
       sender: this.props.id,
-      data: data,
+      data: notification,
     });
     this.setState(Object.assign({}, this.state, { waitingNotification: true }));
 
     this.props.io.on(`notification_${this.props.id}`, (msg) => {
       const { module, sender, data } = msg;
-
       this.receiveNotification(data);
       this.props.io.removeListener(`notification_${this.props.id}`);
       this.setState(Object.assign({}, this.state, { waitingNotification: false }));

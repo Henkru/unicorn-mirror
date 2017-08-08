@@ -3,6 +3,10 @@ import { Row, Col } from 'react-grid-system';
 import MS from './magic-style';
 
 export default class Grid extends React.Component {
+  static propTypes = {
+    modules: React.PropTypes.arrayOf(React.PropTypes.shape).isRequired,
+  };
+
   static defaultProps = {
     modules: [],
   }

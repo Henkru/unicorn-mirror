@@ -26,10 +26,12 @@ config.user.modules.forEach((m) => {
 
         moduleBackends = Object.assign({}, moduleBackends, { [moduleName]: backend });
         log.info('Module %s loaded', moduleName);
-      } catch (e) {
+      }
+      catch (e) {
         log.error('Failed to load module %s: %s', moduleName, e);
       }
-    } catch (e) {
+    }
+    catch (e) {
       log.info('Module %s does not contain backend', moduleName);
     }
   }

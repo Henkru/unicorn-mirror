@@ -240,6 +240,7 @@
     "jsx-a11y/href-no-hash": "off",
     "class-methods-use-this": "off",
     "global-require": "off",
-    "import/no-dynamic-require": "off"
+    "import/no-dynamic-require": "off",
+    "react/forbid-prop-types": [1, { "forbid": ["any"] }]
   }
 }

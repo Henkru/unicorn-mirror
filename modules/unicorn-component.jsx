@@ -12,7 +12,7 @@ export default class UnicornComponent extends React.Component {
     id: '',
     name: '',
     io: null,
-    updateInterval: null,
+    updateInterval: 0,
   }
 
   state = {

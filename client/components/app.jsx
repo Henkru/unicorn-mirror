@@ -8,8 +8,6 @@ import BodyStyle from 'body-style';
 import UnicornBlock from './unicorn-block';
 import Grid from './grid';
 
-
-
 // Styles
 import MS from './magic-style';
 import roboto from '../fonts/roboto.css';

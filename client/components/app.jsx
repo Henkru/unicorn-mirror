@@ -2,17 +2,15 @@
 import SocketIO from 'socket.io-client';
 import uuid from 'uuid';
 
-// Elements
 import React from 'react';
 import BodyStyle from 'body-style';
 import UnicornBlock from './unicorn-block';
 import Grid from './grid';
-
-// Styles
 import MS from './magic-style';
-import roboto from '../fonts/roboto.css';
-
 import config from '../config';
+
+// This will fire the Webpack includes the fonts
+require('../fonts/roboto.css');
 
 const io = new SocketIO(config.socketUrl);
 
@@ -28,8 +26,8 @@ export default class App extends React.Component {
         key={key}
         id={key}
         io={io}
-        updateInterval={module.updateInterval || undefined}
-        settings={module.settings || undefined}
+        updateInterval={module.updateInterval}
+        settings={module.settings}
       />
     );
   }

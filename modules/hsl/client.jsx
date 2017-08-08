@@ -27,11 +27,12 @@ export default class HSL extends UnicornComponent {
   }
 
   update() {
+    const numberOfDepartures = this.props.settings.numberOfDepartures || HSL.defaultProps.settings.numberOfDepartures;
     HSL.client.query({
       query: gql`
         {
           stop(id: "${this.props.settings.id}") {
-            stoptimesWithoutPatterns(numberOfDepartures:${this.props.settings.numberOfDepartures || HSL.defaultProps.settings.numberOfDepartures}) {
+            stoptimesWithoutPatterns(numberOfDepartures:${numberOfDepartures}) {
               trip{
                 route{
                   shortName

@@ -5,6 +5,6 @@ export default class BackendModule {
   }
 
   receiveNotification(sender, data, callback) {
-    throw new Error('receiveNotification not implementet')
+    throw new Error('receiveNotification not implementet');
   }
 }

@@ -54,8 +54,8 @@ export default class Clock extends UnicornComponent {
   render() {
     return (
       <div>
-        {this.time()}
         {this.date()}
+        {this.time()}
       </div>
     );
   }

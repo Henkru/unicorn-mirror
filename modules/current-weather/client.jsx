@@ -37,11 +37,8 @@ export default class CurrentWeather extends UnicornComponent {
   }
 
   update() {
-    this.sendNotification({ action: 'update' });
-  }
-
-  receiveNotification(data) {
-    this.setState({ status: data });
+    this.sendNotification()
+      .then(data => this.setState({ status: data }));
   }
 
   getTemperature() {

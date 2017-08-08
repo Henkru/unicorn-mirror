@@ -17,14 +17,14 @@ export default class FsW3Top10 extends UnicornComponent {
   }
 
   update() {
-    this.sendNotification({ action: 'update' });
-  }
+    this.sendNotification({ action: 'update' })
+      .then((data) => {
+        this.setState({ detections: data.detections });
 
-  receiveNotification(data) {
-    this.setState({ detections: data.detections });
-    setTimeout(() => {
-      this.update();
-    }, data.polling_interval * 1000);
+        setTimeout(() => {
+          this.update();
+        }, data.polling_interval * 1000);
+      });
   }
 
   render() {

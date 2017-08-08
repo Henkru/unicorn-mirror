@@ -30,26 +30,30 @@ export default class UnicornComponent extends React.Component {
   update() {
   }
 
-  receivedNotification(data) {
-  }
-
   sendNotification(notification) {
-    if (this.state.waitingNotification) {
-      return;
-    }
+    return new Promise((resolve, reject) => {
+      // Reject the notification if we are still waiting a previous
+      if (this.state.waitingNotification) {
+        reject('Previous request is still waiting');
+        return;
+      }
 
-    this.props.io.emit('notification', {
-      module: this.props.name,
-      sender: this.props.id,
-      data: notification,
-    });
-    this.setState(Object.assign({}, this.state, { waitingNotification: true }));
+      // Send the notification
+      this.props.io.emit('notification', {
+        module: this.props.name,
+        sender: this.props.id,
+        data: notification || {},
+      });
+      this.setState(Object.assign({}, this.state, { waitingNotification: true }));
 
-    this.props.io.on(`notification_${this.props.id}`, (msg) => {
-      const { module, sender, data } = msg;
-      this.receiveNotification(data);
-      this.props.io.removeListener(`notification_${this.props.id}`);
-      this.setState(Object.assign({}, this.state, { waitingNotification: false }));
+      // Handle the response
+      const messageId = `notification_${this.props.id}`;
+      this.props.io.once(messageId, (msg) => {
+        const { module, sender, data } = msg;
+
+        this.setState(Object.assign({}, this.state, { waitingNotification: false }));
+        resolve(data);
+      });
     });
   }
 

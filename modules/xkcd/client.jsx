@@ -11,7 +11,7 @@ export default class XKCD extends UnicornComponent {
     data: {
       title: '',
       img: '',
-    }
+    },
   }
 
   update() {

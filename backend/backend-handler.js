@@ -31,14 +31,14 @@ export default (io, backends) => {
                 data: res,
               });
             })
-            .catch((e) => {
+            .catch((err) => {
               backend.crashCount = backend.crashCount + 1;
               if (backend.crashCount >= config.crashTreshold) {
                 backend.running = false;
-                log.warn('Disabled module %s: too many crashes', module);
+                log.warn('Disabled module %s: too many (%i) crashes', module, backend.crashCount);
               }
 
-              log.error('Module %s crashed: %s', module, e);
+              log.error('Module %s crashed: %s', module, err);
             });
         }
       }

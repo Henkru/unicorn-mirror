@@ -20,7 +20,7 @@ export default class CurrentWeather extends BackendModule {
       .then(res => res.json());
   }
 
-  receiveNotification(sender, data) {
+  receiveNotification() {
     return this.fetchData();
   }
 }

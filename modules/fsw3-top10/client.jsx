@@ -17,7 +17,7 @@ export default class FsW3Top10 extends UnicornComponent {
   }
 
   update() {
-    this.sendNotification({ action: 'update' })
+    this.sendNotification()
       .then((data) => {
         this.setState({ detections: data.detections });
 

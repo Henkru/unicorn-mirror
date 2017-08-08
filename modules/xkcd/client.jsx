@@ -15,7 +15,7 @@ export default class XKCD extends UnicornComponent {
   }
 
   update() {
-    this.sendNotification({ action: 'update' })
+    this.sendNotification()
       .then(data => this.setState({ data: data }));
   }
 

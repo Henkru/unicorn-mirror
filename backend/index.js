@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 });
 
 if (config.user.backend.serveFrontend) {
-  app.use('/', express.static('dist/client'));
+  app.use('/', express.static(config.user.backend.frontendPath));
 }
 
 const server = http.createServer(app);

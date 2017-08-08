@@ -18,8 +18,11 @@ export default (io, backends) => {
 
       if (backend) {
         if (backend.running) {
-          try {
-            backend.module.receiveNotification(sender, data, (res) => {
+          const response = backend.module.receiveNotification(sender, data);
+
+          // There might be cases when a module just return a data without Promise
+          Promise.resolve(response)
+            .then((res) => {
               log.silly('Response to [%s:%s] with data', module, sender, res);
 
               sck.emit(`notification_${sender}`, {
@@ -27,17 +30,16 @@ export default (io, backends) => {
                 sender,
                 data: res,
               });
-            });
-          }
-          catch (e) {
-            backend.crashCount = backend.crashCount + 1;
-            if (backend.crashCount >= config.crashTreshold) {
-              backend.running = false;
-              log.warn('Disabled module %s: too many crashes', module);
-            }
+            })
+            .catch((e) => {
+              backend.crashCount = backend.crashCount + 1;
+              if (backend.crashCount >= config.crashTreshold) {
+                backend.running = false;
+                log.warn('Disabled module %s: too many crashes', module);
+              }
 
-            log.error('Module %s crashed: %s', module, e);
-          }
+              log.error('Module %s crashed: %s', module, e);
+            });
         }
       }
       else {

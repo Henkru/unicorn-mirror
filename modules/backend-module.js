@@ -4,7 +4,7 @@ export default class BackendModule {
     this.log = log;
   }
 
-  receiveNotification(sender, data, callback) {
+  receiveNotification(sender, data) {
     throw new Error('receiveNotification not implementet');
   }
 }

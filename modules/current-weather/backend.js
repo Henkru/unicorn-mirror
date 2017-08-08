@@ -17,12 +17,10 @@ export default class CurrentWeather extends BackendModule {
     const url = `${this.apiBase}?${params}`;
 
     return fetch(url)
-      .then(res => res.json())
-      .then(res => res);
+      .then(res => res.json());
   }
 
-  receiveNotification(sender, data, callback) {
-    this.fetchData()
-      .then(res => callback(res));
+  receiveNotification(sender, data) {
+    return this.fetchData();
   }
 }

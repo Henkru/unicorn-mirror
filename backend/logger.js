@@ -19,7 +19,8 @@ export default moduleName => new (winston.Logger)({
         const headerColorized = winston.config.colorize(options.level, header);
 
         const message = options.message ? options.message : '';
-        const meta = (options.meta && Object.keys(options.meta).length ? `\n\t${JSON.stringify(options.meta, null, 2)}` : '');
+        const metaLength = options.meta && Object.keys(options.meta).length;
+        const meta = metaLength ? `\n\t${JSON.stringify(options.meta, null, 2)}` : '';
 
         return `${headerColorized} ${message}${meta}`;
       },

@@ -2,7 +2,8 @@ module.exports = {
   backend: {
     serveFrontend: true,
     port: 5000,
-    hostname: "localhost"
+    hostname: "localhost",
+    frontendPath: 'dist/client',
   },
   frontend: {
     api: 'http://localhost:5000',

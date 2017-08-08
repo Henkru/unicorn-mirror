@@ -2,7 +2,7 @@ import React from 'react';
 import UnicornComponent from '../unicorn-component';
 import MS from '../../client/components/magic-style';
 
-import weatherIcon from './css/weather-icons.min.css';
+require('./css/weather-icons.min.css');
 
 const toTitleCase = str => str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 

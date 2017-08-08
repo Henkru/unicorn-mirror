@@ -5,6 +5,7 @@ export default class BackendModule {
   }
 
   receiveNotification(sender, data) {
+    this.log.silly('Received notification from %s with:', sender, data);
     throw new Error('receiveNotification not implementet');
   }
 }

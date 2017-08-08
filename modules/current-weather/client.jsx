@@ -4,6 +4,10 @@ import MS from '../../client/components/magic-style';
 
 require('./css/weather-icons.min.css');
 
+const iconStyle = Object.assign({}, MS.default.xlarge, MS.default.bright, MS.default.light);
+const temperatureStyle = Object.assign({}, MS.default.dimmed, MS.default.normal);
+const descriptionStyle = Object.assign({}, MS.default.medium, MS.default.normal);
+
 const toTitleCase = str => str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 
 export default class CurrentWeather extends UnicornComponent {
@@ -96,12 +100,9 @@ export default class CurrentWeather extends UnicornComponent {
   }
 
   render() {
-    const iconStyle = Object.assign({}, MS.default.xlarge, MS.default.bright, MS.default.light);
-    const temperatureStyle = Object.assign({}, MS.default.dimmed, MS.default.normal);
-
     return (
       <div>
-        <div style={Object.assign({}, MS.default.normal, MS.default.medium)}>
+        <div style={descriptionStyle}>
           {toTitleCase(this.getDescription())}
         </div>
         <div style={iconStyle}>

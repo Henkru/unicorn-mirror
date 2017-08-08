@@ -2,6 +2,9 @@ import React from 'react';
 import UnicornComponent from '../unicorn-component';
 import MS from '../../client/components/magic-style';
 
+const authorStyle = Object.assign({}, MS.default.light, MS.default.bright, MS.default.small, MS.default.alignCenter);
+const quoteStyle = Object.assign({ fontStyle: 'italic', marginBottom: 0 }, MS.default.alignCenter, MS.default.small);
+
 export default class Quote extends UnicornComponent {
   static defaultProps = {
     updateInterval: 10,
@@ -16,13 +19,13 @@ export default class Quote extends UnicornComponent {
     const quotes = this.props.settings.quotes;
     const quote = quotes[Math.floor(Math.random() * quotes.length)];
 
-    this.setState({ currentQuote: quote.quote, author: quote.author });
+    this.setState({
+      currentQuote: quote.quote,
+      author: quote.author,
+    });
   }
 
   render() {
-    const authorStyle = Object.assign({}, MS.default.light, MS.default.bright, MS.default.small, MS.default.alignCenter);
-    const quoteStyle = Object.assign({ fontStyle: 'italic', marginBottom: 0 }, MS.default.alignCenter, MS.default.small);
-
     return (
       <div>
         <p style={quoteStyle}>{ this.state.currentQuote }</p>

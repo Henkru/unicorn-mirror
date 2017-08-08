@@ -3,6 +3,10 @@ import moment from 'moment';
 import UnicornComponent from '../unicorn-component';
 import MS from '../../client/components/magic-style';
 
+const divTimeStyle = Object.assign({}, MS.default.xlarge, MS.default.bright, MS.default.light);
+const secondsStyle = Object.assign({}, MS.default.dimmed, { fontSize: '50%', lineHeight: '50%' });
+const divDateStyle = Object.assign({}, MS.default.normal, MS.default.medium);
+
 export default class Clock extends UnicornComponent {
   static defaultProps = {
     settings: {
@@ -28,7 +32,7 @@ export default class Clock extends UnicornComponent {
 
   date() {
     return (
-      <div style={Object.assign({}, MS.default.normal, MS.default.medium)}>
+      <div style={divDateStyle}>
         {moment(this.state.time).format(this.props.settings.format.date)}
       </div>
     );
@@ -40,11 +44,8 @@ export default class Clock extends UnicornComponent {
     const minutes = moment(this.state.time).format(timeFormat.minutes);
     const seconds = moment(this.state.time).format(timeFormat.seconds);
 
-    const divStyle = Object.assign({}, MS.default.xlarge, MS.default.bright, MS.default.light);
-    const secondsStyle = Object.assign({}, MS.default.dimmed, { fontSize: '50%', lineHeight: '50%' });
-
     return (
-      <div style={divStyle}>
+      <div style={divTimeStyle}>
         {hours}{minutes}
         <sup style={secondsStyle}>{seconds}</sup>
       </div>

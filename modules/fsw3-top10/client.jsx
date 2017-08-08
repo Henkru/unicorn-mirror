@@ -3,6 +3,9 @@ import JsonTable from '../../client/components/react-json-table';
 import UnicornComponent from '../unicorn-component';
 import MS from '../../client/components/magic-style';
 
+const nameStyle = Object.assign({}, MS.default.alignLeft, { display: 'block' });
+const countStyle = Object.assign({}, nameStyle, MS.default.bright, MS.default.alignRight);
+
 export default class FsW3Top10 extends UnicornComponent {
   static defaultProps = {
     updateInterval: 0, // Fecthed data will tell the update time
@@ -31,17 +34,11 @@ export default class FsW3Top10 extends UnicornComponent {
     const columns = [
       {
         key: 'name',
-        cell: (item) => {
-          const style = Object.assign({}, MS.default.alignLeft, { display: 'block' });
-          return <span style={style}>{item.name}</span>;
-        },
+        cell: item => <span style={nameStyle}>{item.name}</span>,
       },
       {
         key: 'count',
-        cell: (item) => {
-          const style = Object.assign({}, MS.default.bright, MS.default.alignRight, { display: 'block' });
-          return <span style={style}>{item.count}</span>;
-        },
+        cell: item => <span style={countStyle}>{item.count}</span>,
       },
     ];
 

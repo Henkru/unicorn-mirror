@@ -7,6 +7,9 @@ import UnicornComponent from '../unicorn-component';
 import MS from '../../client/components/magic-style';
 import JsonTable from '../../client/components/react-json-table';
 
+const arriveStyle = Object.assign({}, MS.default.bright, MS.default.alignRight, { display: 'block' });
+const nameStyle = Object.assign({}, MS.default.alignLeft, { display: 'block' });
+
 export default class HSL extends UnicornComponent {
   static defaultProps = {
     settings: {
@@ -51,18 +54,13 @@ export default class HSL extends UnicornComponent {
     const columns = [
       {
         key: 'name',
-        cell: (item) => {
-          const style = Object.assign({}, MS.default.alignLeft, { display: 'block' });
-          return <span style={style}>{ item.trip.route.shortName }</span>;
-        },
+        cell: item => <span style={nameStyle}>{ item.trip.route.shortName }</span>,
       },
       {
-        key: 'count',
+        key: 'arrive',
         cell: (item) => {
-          const style = Object.assign({}, MS.default.bright, MS.default.alignRight, { display: 'block' });
           const timestamp = item.serviceDay + item.scheduledDeparture + item.departureDelay;
-
-          return <span style={style}>{moment(timestamp * 1000).format('HH:mm')}</span>;
+          return <span style={arriveStyle}>{moment(timestamp * 1000).format('HH:mm')}</span>;
         },
       },
     ];

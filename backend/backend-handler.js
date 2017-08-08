@@ -13,13 +13,15 @@ export default (io, backends) => {
 
     sck.on('notification', (msg) => {
       const { module, sender, data } = msg;
+      const backend = backends[module];
+      log.silly('Received notification from [%s:%s] with data:', module, sender, data);
 
-      if (backends[module]) {
-        const backend = backends[module];
-
+      if (backend) {
         if (backend.running) {
           try {
             backend.module.receiveNotification(sender, data, (res) => {
+              log.silly('Response to [%s:%s] with data', module, sender, res);
+
               sck.emit(`notification_${sender}`, {
                 module,
                 sender,

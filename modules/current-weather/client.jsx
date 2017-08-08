@@ -108,7 +108,10 @@ export default class CurrentWeather extends UnicornComponent {
           {toTitleCase(this.getDescription())}
         </div>
         <div style={iconStyle}>
-          <i style={{ paddingRight: '0.3em' }} className={this.getWeatherIcon()} />
+          <i
+            style={{ paddingRight: '0.3em' }}
+            className={this.getWeatherIcon()}
+          />
           <span style={temperatureStyle}>{this.getTemperature()} &deg;</span>
         </div>
       </div>

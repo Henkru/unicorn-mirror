@@ -19,7 +19,6 @@ export default class Clock extends UnicornComponent {
   }
 
   state = {
-    id: '',
     time: moment(),
   }
 
@@ -28,11 +27,9 @@ export default class Clock extends UnicornComponent {
   }
 
   date() {
-    const date = moment(this.state.time).format(this.props.settings.format.date);
-
     return (
       <div style={Object.assign({}, MS.default.normal, MS.default.medium)}>
-        {date}
+        {moment(this.state.time).format(this.props.settings.format.date)}
       </div>
     );
   }
@@ -55,13 +52,10 @@ export default class Clock extends UnicornComponent {
   }
 
   render() {
-    const time = this.time();
-    const date = this.date();
-
     return (
       <div>
-        {date}
-        {time}
+        {this.time()}
+        {this.date()}
       </div>
     );
   }

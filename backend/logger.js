@@ -3,7 +3,7 @@ import moment from 'moment';
 import config from './config';
 
 if (!config.prod) {
-  winston.level = 'debug';
+  winston.level = process.env.LOGGING_LEVEL || 'debug';
 }
 
 export default moduleName => new (winston.Logger)({
@@ -16,7 +16,7 @@ export default moduleName => new (winston.Logger)({
         const headerColorized = winston.config.colorize(options.level, header);
 
         const message = options.message ? options.message : '';
-        const meta = (options.meta && Object.keys(options.meta).length ? `\n\t${JSON.stringify(options.meta)}` : '');
+        const meta = (options.meta && Object.keys(options.meta).length ? `\n\t${JSON.stringify(options.meta, null, 2)}` : '');
 
         return `${headerColorized} ${message}${meta}`;
       },

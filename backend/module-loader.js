@@ -19,7 +19,7 @@ config.user.modules.forEach((m) => {
 
       try {
         const backend = {
-          module: new BackendClass(m.settings || {}, logger(moduleName)),
+          module: new BackendClass(m.settings, logger(moduleName)),
           running: true,
           crashCount: 0,
         };
@@ -28,11 +28,11 @@ config.user.modules.forEach((m) => {
         log.info('Module %s loaded', moduleName);
       }
       catch (e) {
-        log.error('Failed to load module %s: %s', moduleName, e);
+        log.error('Failed to load a module %s: %s', moduleName, e);
       }
     }
     catch (e) {
-      log.info('Module %s does not contain backend', moduleName);
+      log.debug('Module %s does not contain a backend service', moduleName);
     }
   }
 });

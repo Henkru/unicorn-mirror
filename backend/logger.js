@@ -3,8 +3,11 @@ import moment from 'moment';
 import config from './config';
 
 if (!config.prod) {
-  winston.level = process.env.LOGGING_LEVEL || 'debug';
+  winston.level = 'debug';
 }
+
+// Overwrite logging level if LOGGING_LEVEL env is presented
+winston.level = process.env.LOGGING_LEVEL || winston.level;
 
 export default moduleName => new (winston.Logger)({
   level: winston.level,

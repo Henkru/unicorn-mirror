@@ -4,6 +4,9 @@ module.exports = {
     port: 5000,
     hostname: "localhost"
   },
+  frontend: {
+    api: 'http://localhost:5000',
+  },
   modules: [
     {
       module: "clock",

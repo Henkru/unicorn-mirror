@@ -219,7 +219,6 @@
     // "babel/space-in-brackets": 1, // deprecated
 
     /* React */
-    "react/display-name": 1,
     "react/jsx-boolean-value": 1,
     "react/jsx-no-duplicate-props": 1,
     "react/jsx-no-undef": 1,
@@ -242,6 +241,6 @@
     "global-require": "off",
     "import/no-dynamic-require": "off",
     "react/forbid-prop-types": [1, { "forbid": ["any"] }],
-    "react/display-name": "off"
+    "react/display-name": 0
   }
 }

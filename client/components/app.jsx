@@ -22,7 +22,16 @@ export default class App extends React.Component {
     const Module = require(`../../modules/${moduleName}/client`).default;
 
     const key = uuid.v4();
-    return <Module name={moduleName} key={key} id={key} io={socket} settings={module.settings || {}} />;
+    return (
+      <Module
+        name={moduleName}
+        key={key}
+        id={key}
+        io={socket}
+        updateInterval={module.updateInterval || undefined}
+        settings={module.settings || undefined}
+      />
+    );
   }
 
   state = {

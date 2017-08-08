@@ -5,10 +5,22 @@ export default class UnicornComponent extends React.Component {
     id: '',
     name: '',
     io: null,
+    updateInterval: null,
   }
 
   state = {
     waitingNotification: false,
+  }
+
+  componentDidMount() {
+    this.update();
+
+    if (this.props.updateInterval) {
+      setInterval(() => this.update(), this.props.updateInterval * 1000);
+    }
+  }
+
+  update() {
   }
 
   receivedNotification(data) {

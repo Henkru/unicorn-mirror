@@ -4,6 +4,7 @@ import MS from '../../client/components/magic-style';
 
 export default class XKCD extends UnicornComponent {
   static defaultProps = {
+    updateInterval: 6 * 60 * 60,
   }
 
   state = {
@@ -13,19 +14,12 @@ export default class XKCD extends UnicornComponent {
     }
   }
 
-  componentDidMount() {
-    this.update();
-  }
-
   update() {
     this.sendNotification({ action: 'update' });
   }
 
   receiveNotification(data) {
     this.setState({ data: data });
-    setTimeout(() => {
-      this.update();
-    }, 12 * 60 * 1000);
   }
 
   render() {

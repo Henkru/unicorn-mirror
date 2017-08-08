@@ -8,6 +8,7 @@ const toTitleCase = str => str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCas
 
 export default class CurrentWeather extends UnicornComponent {
   static defaultProps = {
+    updateInterval: 60,
   }
 
   static iconTable = {
@@ -33,11 +34,6 @@ export default class CurrentWeather extends UnicornComponent {
 
   state = {
     status: {},
-  }
-
-  componentDidMount() {
-    this.update();
-    setInterval(() => this.update(), 60 * 1000);
   }
 
   update() {

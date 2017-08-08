@@ -10,7 +10,8 @@ module.exports = {
   modules: [
     {
       module: "clock",
-      position: "right"
+      position: "right",
+      updateInterval: 1
     },
     {
       module: "current-weather",

@@ -4,6 +4,7 @@ import MS from '../../client/components/magic-style';
 
 export default class Quote extends UnicornComponent {
   static defaultProps = {
+    updateInterval: 10,
   }
 
   state = {
@@ -11,12 +12,7 @@ export default class Quote extends UnicornComponent {
     author: '',
   }
 
-  componentDidMount() {
-    this.changeQuote();
-    setInterval(() => this.changeQuote(), 2 * 1 * 1000);
-  }
-
-  changeQuote() {
+  update() {
     const quotes = this.props.settings.quotes;
     const quote = quotes[Math.floor(Math.random() * quotes.length)];
 

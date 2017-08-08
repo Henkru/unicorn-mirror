@@ -12,7 +12,8 @@ export default class HSL extends UnicornComponent {
     settings: {
       id: '',
       numberOfDepartures: 10,
-    }
+    },
+    updateInterval: 5 * 60,
   }
 
   static client = new ApolloClient({
@@ -25,7 +26,7 @@ export default class HSL extends UnicornComponent {
     busses: [],
   }
 
-  updateBusses() {
+  update() {
     HSL.client.query({
       query: gql`
         {
@@ -43,11 +44,6 @@ export default class HSL extends UnicornComponent {
           `,
     })
       .then(res => this.setState({ busses: res.data.stop.stoptimesWithoutPatterns }));
-  }
-
-  componentDidMount() {
-    this.updateBusses();
-    setInterval(() => this.updateBusses(), 30 * 1000);
   }
 
   render() {
